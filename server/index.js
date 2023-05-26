@@ -20,7 +20,7 @@ dotenv.config({ path: './config.env' })
 
  const  multerStorage =  multer.diskStorage({
      destination :  (req,file,cb) => {
-         cb(null, './server/uploads');
+         cb(null, './uploads');
      },
      filename : (req,file,cb) => {
          console.log(file)
@@ -98,7 +98,7 @@ app.use('/api/v1/category', categoryRouter);
 // app.use('/api/v1/cart_items',cartRouter);
 // app.use('/api/v1/orders', orderRouter)
 
- app.post('/api/v1/posts/upload_photo', upload.single('photo'), (req, res) => {
+ app.post('https://laundry-connect-api-v2-kcp5.vercel.app/posts/upload_photo', upload.single('photo'), (req, res) => {
     // do something with the photo
  //   console.log(req.file)
     const path =  req.file.path;
@@ -115,8 +115,8 @@ app.use('/api/v1/category', categoryRouter);
 
  app.use('/uploads', express.static('/uploads'));
 
-const uploadsPath = path.join(__dirname, '..', 'server', 'uploads', 'posts');
-app.use('/uploads/posts', express.static(uploadsPath));
+//const uploadsPath = path.join(__dirname, '..', 'server', 'uploads', 'posts');
+//app.use('/uploads/posts', express.static(uploadsPath));
 
  //app.use('/uploads/posts', express.static(__dirname + '/server/uploads/posts'));
 
