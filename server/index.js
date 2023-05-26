@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const cors = require('cors');
 const fs = require('fs');
+const path = require('path');
 const dotenv = require('dotenv');
 const AppError = require('./utils/AppError');
 const globalErrorHandler =  require('./controllers/errorController')
@@ -19,7 +20,7 @@ dotenv.config({ path: './config.env' })
 
  const  multerStorage =  multer.diskStorage({
      destination :  (req,file,cb) => {
-         cb(null,'./server/uploads/posts')
+         cb(null, './server/uploads');
      },
      filename : (req,file,cb) => {
          console.log(file)
@@ -112,7 +113,11 @@ app.use('/api/v1/category', categoryRouter);
      })
    });
 
- app.use('/uploads', express.static('uploads'));
+ app.use('/uploads', express.static('/uploads'));
+
+const uploadsPath = path.join(__dirname, '..', 'server', 'uploads', 'posts');
+app.use('/uploads/posts', express.static(uploadsPath));
+
  //app.use('/uploads/posts', express.static(__dirname + '/server/uploads/posts'));
 
 app.use(globalErrorHandler);
