@@ -60,4 +60,20 @@ exports.updateLaundry = Factory.updateOne(Laundry);
 
 exports.getLaundryById =Factory.getOne(Laundry);
 
-exports.deleteLaundry =  Factory.deleteModel(Laundry)
+exports.deleteLaundry =  Factory.deleteModel(Laundry);
+
+exports.getCategoryLaundry =  catchAsync(  async (req,res,next) => {
+    const laundry  =   await Laundry.find({category : req.params.id});
+
+    if(!laundry){
+        return next(new  AppError('No dota found with that  ID', 404));
+    }
+
+    res.status(200).json({
+        status  :  'success',
+        results : laundry.legth,
+        data :  {
+            laundry
+        }
+    })
+} )
