@@ -21,6 +21,7 @@ const ServiceSchema =  mongoose.Schema({
         type : Date,
         default : Date.now()
     },
+ photo : String,
     deleted : {
         type : String,
         default : false

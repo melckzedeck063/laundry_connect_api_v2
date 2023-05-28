@@ -12,7 +12,7 @@ router.post('/new_service', ServiceController.createService);
 
 router.get('/services', ServiceController.getAllServices);
 
-router.get('/laundry_services', ServiceController.getLaundryServices);
+router.get('/laundry_services/:id', ServiceController.getLaundryServices);
 
 router.get('/service/:id', ServiceController.getService);
 
