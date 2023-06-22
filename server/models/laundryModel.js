@@ -12,6 +12,9 @@ const LaundrySchema = mongoose.Schema({
         required : [true, 'Location is required'],
         trim :  true
     },
+    geo : {
+        type : Object
+    },
     description : {
         type : String,
         required : true,
