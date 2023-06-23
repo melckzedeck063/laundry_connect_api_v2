@@ -18,15 +18,6 @@ const OrderSchema =  mongoose.Schema({
         type : String,
         default : "Pending"
     },
-    delivery_fee : String,
-    user_location : {
-        type : Object,
-        required : true
-    },
-    driver : {
-        type : mongoose.Schema.ObjectId,
-        ref :'User'
-    },
     amounts :[
 {
 type :Number
@@ -35,7 +26,7 @@ type :Number
     order_items : [
         {
             type : mongoose.Schema.ObjectId,
-            ref : 'Product'
+            ref : 'Service'
         }
     ],
     ordered_by : {
@@ -47,10 +38,6 @@ type :Number
 OrderSchema.pre(/^find/, function(next){
     this.populate({
         path : 'ordered_by',
-        select : '-__v -role -password'
-    })
-    .populate({
-        path : 'driver',
         select : '-__v -role -password'
     })
     .populate({

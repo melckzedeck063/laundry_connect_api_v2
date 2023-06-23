@@ -81,6 +81,8 @@ const signalRouter =  require('./routes/fileUpload_router');
 const laundryRouter =  require('./routes/laundry_route');
 const categoryRouter =  require('./routes/category_route');
 const serviceRouter =   require('./routes/service_route');
+const  cartRouter =  require('./routes/cartItem_route');
+const orderRouter =  require('./routes/order_route')
 
 
 app.use('/api/v1/user', userRouter);
@@ -88,6 +90,8 @@ app.use('/api/v1/signal', signalRouter);
 app.use('/api/v1/laundry', laundryRouter)
 app.use('/api/v1/category', categoryRouter);
 app.use('/api/v1/service', serviceRouter);
+app.use('/api/v1/cart_items',cartRouter);
+app.use('/api/v1/orders', orderRouter)
 
  app.post('/api/v1/posts/upload_photo', upload.single('photo'), (req, res) => {
     // do something with the photo

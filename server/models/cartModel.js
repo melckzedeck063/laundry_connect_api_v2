@@ -22,7 +22,7 @@ const  CartSchema =  mongoose.Schema({
     },
     product : {
         type : mongoose.Schema.ObjectId,
-        ref : 'Product',
+        ref : 'Service',
         required : [true, "Product  id is required"],
         trim : true
     }
